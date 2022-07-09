@@ -16,13 +16,13 @@ namespace inmobiscosts.Vista
         EdificioAdmin admin = new EdificioAdmin();
         private void Consultar()
         {
-            grid_edificios.DataSource = admin.ConsultarEdificios();
-            grid_edificios.DataBind();
+            //grid_edificios.DataSource = admin.ConsultarEdificios();
+           // grid_edificios.DataBind();
 
         }
         protected void Page_Load(object sender, EventArgs e)
         {
-            Consultar();
+           
         }
 
 
@@ -37,11 +37,11 @@ namespace inmobiscosts.Vista
                 Provincia = dp_provincia.Text,
                 Canton = txt_canton.Text,
                 Distrito = txt_distrito.Text,
-                Adquirido = int.Parse(rd_adquirido.SelectedValue),
+                Adquirido = rd_adquirido.SelectedValue,
                 Fecha_fin = cal_fin.SelectedDate.ToString()
             };
             admin.Guardar(modelo);
-            Consultar();
+
         }
     }
 }

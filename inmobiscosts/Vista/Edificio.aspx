@@ -51,8 +51,8 @@
             <br />
             <br />
 &nbsp;<asp:RadioButtonList ID="rd_adquirido" runat="server">
-                <asp:ListItem Value="1">Adquirido</asp:ListItem>
-                <asp:ListItem Value="0">Alquilado</asp:ListItem>
+                <asp:ListItem Value="Adquirido">Adquirido</asp:ListItem>
+                <asp:ListItem Value="Alquilado">Alquilado</asp:ListItem>
             </asp:RadioButtonList>
             <br />
             <br />
@@ -75,8 +75,20 @@
             <br />
         </div>
         <div>
-            <asp:GridView ID="grid_edificios" runat="server">
+            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="Id" DataSourceID="SqlDataSource1" Height="136px" Width="887px">
+                <Columns>
+                    <asp:BoundField DataField="Id" HeaderText="Id" InsertVisible="False" ReadOnly="True" SortExpression="Id" />
+                    <asp:BoundField DataField="nombre" HeaderText="nombre" SortExpression="nombre" />
+                    <asp:BoundField DataField="capacidad" HeaderText="capacidad" SortExpression="capacidad" />
+                    <asp:BoundField DataField="provincia" HeaderText="provincia" SortExpression="provincia" />
+                    <asp:BoundField DataField="canton" HeaderText="canton" SortExpression="canton" />
+                    <asp:BoundField DataField="distrito" HeaderText="distrito" SortExpression="distrito" />
+                    <asp:BoundField DataField="adquirido" HeaderText="adquirido" SortExpression="adquirido" />
+                    <asp:BoundField DataField="fecha_inicio" HeaderText="fecha_inicio" SortExpression="fecha_inicio" />
+                    <asp:BoundField DataField="fecha_fin" HeaderText="fecha_fin" SortExpression="fecha_fin" />
+                </Columns>
             </asp:GridView>
+            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:inmobiDB %>" SelectCommand="SELECT [Id], [nombre], [capacidad], [provincia], [canton], [distrito], [adquirido], [fecha_inicio], [fecha_fin] FROM [edificio]"></asp:SqlDataSource>
         </div>
     </form>
 </body>

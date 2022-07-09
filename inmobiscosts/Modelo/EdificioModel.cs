@@ -14,7 +14,7 @@ namespace inmobiscosts.Modelo
         public string Provincia { get; set; }
         public string Canton { get; set; }
         public string Distrito { get; set; }
-        public int Adquirido { get; set; }
+        public string Adquirido { get; set; }
         public string Fecha_fin { get; set; }
 
     }
