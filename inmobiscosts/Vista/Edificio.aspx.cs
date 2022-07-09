@@ -43,5 +43,18 @@ namespace inmobiscosts.Vista
             admin.Guardar(modelo);
 
         }
+
+        protected void rd_adquirido_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (rd_adquirido.SelectedValue == "Alquilado")
+            {
+                cal_fin.Visible= false; 
+
+            }
+            else
+            {
+
+            }
+        }
     }
 }
