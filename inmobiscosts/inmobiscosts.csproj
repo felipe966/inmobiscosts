@@ -161,6 +161,10 @@
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Vista\Edificio.aspx" />
     <Content Include="Vista\Index.aspx" />
+    <Content Include="Vista\Servicio.aspx" />
+    <Content Include="Vista\ServicioEdificio.aspx" />
+    <Content Include="Vista\ServiciosEdificio.aspx" />
+    <Content Include="Vista\TipoServicio.aspx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
     <Content Include="Site.Mobile.Master" />
@@ -184,6 +188,10 @@
     </Compile>
     <Compile Include="Datos\Conexion.cs" />
     <Compile Include="Datos\EdificioAdmin.cs" />
+    <Compile Include="Modelo\EdificioTipoServicioModel.cs" />
+    <Compile Include="Datos\ServicioAdmin.cs" />
+    <Compile Include="Datos\ServicioEdificioAdmin.cs" />
+    <Compile Include="Datos\TipoServicioAdmin.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -195,6 +203,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Modelo\EdificioModel.cs" />
+    <Compile Include="Modelo\ServicioEdificioModel.cs" />
+    <Compile Include="Modelo\ServicioModel.cs" />
+    <Compile Include="Modelo\TipoServicioModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
@@ -230,6 +241,34 @@
     </Compile>
     <Compile Include="Vista\Index.aspx.designer.cs">
       <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\Servicio.aspx.cs">
+      <DependentUpon>Servicio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\Servicio.aspx.designer.cs">
+      <DependentUpon>Servicio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\ServicioEdificio.aspx.cs">
+      <DependentUpon>ServicioEdificio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\ServicioEdificio.aspx.designer.cs">
+      <DependentUpon>ServicioEdificio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\ServiciosEdificio.aspx.cs">
+      <DependentUpon>ServiciosEdificio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\ServiciosEdificio.aspx.designer.cs">
+      <DependentUpon>ServiciosEdificio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\TipoServicio.aspx.cs">
+      <DependentUpon>TipoServicio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\TipoServicio.aspx.designer.cs">
+      <DependentUpon>TipoServicio.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup />

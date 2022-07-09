@@ -52,7 +52,6 @@ namespace inmobiscosts.Datos
                 SqlDataReader reader = comando.ExecuteReader();
                 while (reader.Read())
                 {
-                    Console.WriteLine(reader.ToString());
                     EdificioModel modelo = new EdificioModel()
                     {
                         Id = (int)reader[0],
