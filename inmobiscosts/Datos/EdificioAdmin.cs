@@ -16,6 +16,7 @@ namespace inmobiscosts.Datos
             {
                 DateTime iDate = Convert.ToDateTime(modelo.Fecha_inicio);
                 DateTime fDate = Convert.ToDateTime(modelo.Fecha_fin);
+
                 SqlCommand comando = new SqlCommand("GuardarEdificio", cnn);
                 comando.CommandType = System.Data.CommandType.StoredProcedure;
                 comando.Parameters.Add(new SqlParameter("@nombre", modelo.Nombre));

@@ -29,6 +29,15 @@ namespace inmobiscosts.Vista
 
         protected void bt_agregar_Click(object sender, EventArgs e)
         {
+            string fecha_fin = "";
+            if (rd_adquirido.SelectedValue == "Adquirido")
+            {
+                fecha_fin= "1/1/1753 12:00:00";
+            }
+            else
+            {
+                fecha_fin=cal_fin.SelectedDate.ToString();
+            }
             EdificioModel modelo = new EdificioModel()
             {
                 Nombre = txt_nombre.Text,
@@ -38,7 +47,7 @@ namespace inmobiscosts.Vista
                 Canton = txt_canton.Text,
                 Distrito = txt_distrito.Text,
                 Adquirido = rd_adquirido.SelectedValue,
-                Fecha_fin = cal_fin.SelectedDate.ToString()
+                Fecha_fin = fecha_fin
             };
             admin.Guardar(modelo);
 
@@ -46,15 +55,18 @@ namespace inmobiscosts.Vista
 
         protected void rd_adquirido_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (rd_adquirido.SelectedValue == "Alquilado")
+            if (rd_adquirido.SelectedValue=="Alquilado")
             {
-                cal_fin.Visible= false; 
+                pn_cal_fin.Visible = true;
 
             }
             else
             {
-
+                pn_cal_fin.Visible = false;
             }
+            
+
+            
         }
     }
 }
