@@ -50,6 +50,7 @@ namespace inmobiscosts.Vista
                 Fecha_fin = fecha_fin
             };
             admin.Guardar(modelo);
+            Response.Redirect("Edificio.aspx");
 
         }
 

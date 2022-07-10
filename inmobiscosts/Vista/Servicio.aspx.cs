@@ -25,6 +25,7 @@ namespace inmobiscosts.Vista
                 Tipo_id = int.Parse(dp_tipo_id.SelectedValue)
             };
             admin.Guardar(modelo);
+            Response.Redirect("Servicio.aspx");
         }
     }
 }

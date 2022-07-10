@@ -13,8 +13,21 @@ namespace inmobiscosts.Vista
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            dp_empresa.DataSource = ServicioAdmin.GetServiciosByTipo(int.Parse(dp_tipo_servicio.SelectedValue));
-            dp_empresa.DataBind();
+            
+            
+            try
+            {
+                dp_empresa.DataSource = ServicioAdmin.GetServiciosByTipo(1);
+            }
+            catch (Exception)
+            {
+
+                dp_empresa.DataSource = null;
+            }
+            finally
+            {
+                dp_empresa.DataBind();
+            }
         }
 
 
@@ -31,6 +44,7 @@ namespace inmobiscosts.Vista
                 Fecha_corte = int.Parse(dp_fecha_corte.SelectedValue),
             };
             admin.Guardar(modelo);
+            Response.Redirect("ServicioEdificio.aspx");
 
         }
 

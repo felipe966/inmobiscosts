@@ -20,16 +20,16 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="/Vista/Index">Inicio <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="/Vista/ServicioEdificio">Asociar Servicio <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/Vista/Edificio">Agregar Edificio</a>
+        <a class="nav-link" href="/Vista/Edificio">Nuevo Edificio</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/Vista/Servicio">Agregar Servicio</a>
+        <a class="nav-link" href="/Vista/Servicio">Nuevo Servicio</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/Vista/ServiciosEdificios">Servicios Edificios</a>
+        <a class="nav-link" href="/Vista/ServiciosEdificio">Servicios de un Edificio</a>
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">

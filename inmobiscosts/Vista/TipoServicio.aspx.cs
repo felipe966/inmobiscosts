@@ -27,7 +27,8 @@ namespace inmobiscosts.Vista
 
             };
             admin.Guardar(modelo);
-          
+            Response.Redirect("TipoServicio.aspx");
+
         }
     }
 }
