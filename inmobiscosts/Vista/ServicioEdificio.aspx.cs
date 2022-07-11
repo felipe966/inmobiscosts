@@ -14,20 +14,6 @@ namespace inmobiscosts.Vista
         protected void Page_Load(object sender, EventArgs e)
         {
             
-            
-            try
-            {
-                dp_empresa.DataSource = ServicioAdmin.GetServiciosByTipo(1);
-            }
-            catch (Exception)
-            {
-
-                dp_empresa.DataSource = null;
-            }
-            finally
-            {
-                dp_empresa.DataBind();
-            }
         }
 
 
@@ -52,7 +38,7 @@ namespace inmobiscosts.Vista
         {
             try
             {
-                dp_empresa.DataSource = null;
+                
                 dp_empresa.DataSource = ServicioAdmin.GetServiciosByTipo(int.Parse(dp_tipo_servicio.SelectedValue));
             }
             catch (Exception)
