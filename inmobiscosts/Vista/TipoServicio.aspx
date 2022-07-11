@@ -49,7 +49,7 @@
                  <br />
                  &nbsp;<div class="form-group">
 
-            <asp:TextBox ID="txt_unidad_medida" runat="server" Width="293px" CssClass="form-control form-control-lg" placeholder="Nombre del servicio"></asp:TextBox>
+            <asp:TextBox ID="txt_unidad_medida" runat="server" Width="293px" CssClass="form-control form-control-lg" placeholder="Unidad de medida"></asp:TextBox>
 
                   </div>
             <br />

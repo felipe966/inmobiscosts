@@ -35,7 +35,7 @@ namespace inmobiscosts.Vista
             }
             else
             {
-                Response.Write("<script>alert('Data inserted successfully')</script>");
+                Response.Write("<script>alert('El edificio seleccionado ya posee el servicio especificado. Por favor revise los datos')</script>");
                 //Response.Redirect("ServicioEdificio.aspx");
             }
             

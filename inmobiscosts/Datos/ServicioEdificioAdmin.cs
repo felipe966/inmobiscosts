@@ -11,10 +11,10 @@ namespace inmobiscosts.Datos
     {
         public bool Guardar(ServicioEdificioModel modelo)
         {
-            Conectar();
+            
             try
             {
-
+                Conectar();
                 List<ServicioEdificioModel> lista = new List<ServicioEdificioModel>();
                 SqlCommand cmd = new SqlCommand("GetServicioEdificioByServicioId", cnn);
                 cmd.Parameters.Add(new SqlParameter("@id", modelo.Servicio_id));
@@ -22,10 +22,15 @@ namespace inmobiscosts.Datos
                 SqlDataReader reader = cmd.ExecuteReader();
                 if (reader.HasRows)
                 {
+                    cmd.Dispose();
+                    Desconectar();
                     return false;
                 }
                 else
                 {
+                    cmd.Dispose();
+                    Desconectar();
+                    Conectar();
                     SqlCommand comando = new SqlCommand("GuardarServicioEdificio", cnn);
                     comando.CommandType = System.Data.CommandType.StoredProcedure;
                     comando.Parameters.Add(new SqlParameter("@edificio_id", modelo.Edificio_id));
