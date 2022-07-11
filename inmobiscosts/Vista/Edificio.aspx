@@ -124,7 +124,7 @@
             </div>
             </div>
             <div style="width:100%">
-                     <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="Id" DataSourceID="SqlDataSource1" class="table table-bordered table-condensed table-responsive table-hover ">
+                     <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="Id" DataSourceID="SqlDataSource1" class="table table-bordered table-condensed  table-hover ">
                          <Columns>
                              <asp:BoundField DataField="Id" HeaderText="Id" InsertVisible="False" ReadOnly="True" SortExpression="Id" />
                              <asp:BoundField DataField="nombre" HeaderText="Nombre" SortExpression="nombre" />

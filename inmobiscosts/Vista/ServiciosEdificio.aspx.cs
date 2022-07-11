@@ -15,14 +15,38 @@ namespace inmobiscosts.Vista
         ServicioEdificioAdmin ServicioAdmin = new ServicioEdificioAdmin();
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            try
+            {
+                gv_servicios.DataSource = null;
+                gv_servicios.DataSource = ServicioAdmin.GetAllServiciosEdificio();
+                
+            }
+            catch
+            {
+                gv_servicios.DataSource = null;
+            }
+            finally
+            {
+                gv_servicios.DataBind();
+            }
         }
 
         protected void dp_edificio_SelectedIndexChanged(object sender, EventArgs e)
         {
-            gv_servicios.DataSource = null;
-            gv_servicios.DataSource = ServicioAdmin.GetServiciosEdificio(int.Parse(dp_edificio.SelectedValue));
-            gv_servicios.DataBind();
+            try
+            {
+                gv_servicios.DataSource = null;
+                gv_servicios.DataSource = ServicioAdmin.GetServiciosEdificio(int.Parse(dp_edificio.SelectedValue));
+
+            }
+            catch
+            {
+                gv_servicios.DataSource = null;
+            }
+            finally
+            {
+                gv_servicios.DataBind();
+            }
         }
 
         

@@ -50,8 +50,20 @@ namespace inmobiscosts.Vista
 
         protected void dp_tipo_servicio_SelectedIndexChanged(object sender, EventArgs e)
         {
-            dp_empresa.DataSource = ServicioAdmin.GetServiciosByTipo(int.Parse(dp_tipo_servicio.SelectedValue));
-            dp_empresa.DataBind();
+            try
+            {
+                dp_empresa.DataSource = null;
+                dp_empresa.DataSource = ServicioAdmin.GetServiciosByTipo(int.Parse(dp_tipo_servicio.SelectedValue));
+            }
+            catch (Exception)
+            {
+
+                dp_empresa.DataSource = null;
+            }
+            finally
+            {
+                dp_empresa.DataBind();
+            }
         }
     }
 }

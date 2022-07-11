@@ -55,7 +55,7 @@
                  <br /><div class="form-group">
                 <asp:Button ID="bt_agregar" runat="server" Height="42px" OnClick="bt_agregar_Click" CssClass="btn btn-info btn-lg btn-block"  Text="Agregar" Width="197px" />
                  </div><br />
-                 <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="Id" DataSourceID="SqlDataSource1"  class="table table-bordered table-condensed table-responsive table-hover " >
+                 <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="Id" DataSourceID="SqlDataSource1"  class="table table-bordered table-condensed  table-hover " >
                      <Columns>
                          <asp:BoundField DataField="Id" HeaderText="ID Servicio" InsertVisible="False" ReadOnly="True" SortExpression="Id" />
                          <asp:BoundField DataField="nombre_empresa" HeaderText="Nombre de la Empresa" SortExpression="nombre_empresa" />

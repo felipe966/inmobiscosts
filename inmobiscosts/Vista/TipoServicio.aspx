@@ -38,10 +38,10 @@
   </div>
 </nav>
     <div class="container-fluid">
-    
+     <form id="form1" runat="server">
         <div aria-sort="none"  class="row justify-content-center align-items-center">
             <div class="col col-sm-6 col-md-6 col-lg-4 col-xl-3">
-             <form id="form1" runat="server">
+            
                 &nbsp;
              <div class="form-group">
             <asp:TextBox ID="txt_nombre" runat="server" Width="293px" CssClass="form-control form-control-lg" placeholder="Nombre del servicio"></asp:TextBox>
@@ -58,7 +58,14 @@
                 <asp:Button ID="bt_agregar" runat="server" Height="42px" OnClick="bt_agregar_Click" CssClass="btn btn-info btn-lg btn-block"  Text="Agregar" Width="197px" />
                  </div><br />
                  <br />
-                 <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="Id" DataSourceID="SqlDataSource1">
+                
+                 <br />
+                 
+
+            </div>
+            </div>
+             <div style="width:auto">
+                 <asp:GridView ID="GridView1" runat="server" class="table table-bordered table-condensed  table-hover " AutoGenerateColumns="False" DataKeyNames="Id" DataSourceID="SqlDataSource1">
                      <Columns>
                          <asp:BoundField DataField="Id" HeaderText="ID" InsertVisible="False" ReadOnly="True" SortExpression="Id" />
                          <asp:BoundField DataField="nombre" HeaderText="Nombre del servicio" SortExpression="nombre" />
@@ -81,12 +88,8 @@
                          <asp:Parameter Name="Id" Type="Int32" />
                      </UpdateParameters>
                  </asp:SqlDataSource>
-                 <br />
-                 </form>
-
-            </div>
-            </div>
-            
+                </div>
+        </form>
         </div>
 </body>
 </html>

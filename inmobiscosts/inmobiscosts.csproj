@@ -160,7 +160,6 @@
     <Content Include="Site.Master" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Vista\Edificio.aspx" />
-    <Content Include="Vista\Index.aspx" />
     <Content Include="Vista\Servicio.aspx" />
     <Content Include="Vista\ServicioEdificio.aspx" />
     <Content Include="Vista\ServiciosEdificio.aspx" />
@@ -234,13 +233,6 @@
     </Compile>
     <Compile Include="Vista\Edificio.aspx.designer.cs">
       <DependentUpon>Edificio.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Vista\Index.aspx.cs">
-      <DependentUpon>Index.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Vista\Index.aspx.designer.cs">
-      <DependentUpon>Index.aspx</DependentUpon>
     </Compile>
     <Compile Include="Vista\Servicio.aspx.cs">
       <DependentUpon>Servicio.aspx</DependentUpon>

@@ -103,5 +103,39 @@ namespace inmobiscosts.Datos
             }
             return lista;
         }
+        //GetAllServiciosEdificio
+        public List<EdificioTipoServicioModel> GetAllServiciosEdificio()
+        {
+            List<EdificioTipoServicioModel> lista = new List<EdificioTipoServicioModel>();
+            Conectar();
+            try
+            {
+                SqlCommand comando = new SqlCommand("GetAllServiciosEdificio", cnn);
+                comando.CommandType = System.Data.CommandType.StoredProcedure;
+                SqlDataReader reader = comando.ExecuteReader();
+                while (reader.Read())
+                {
+                    EdificioTipoServicioModel modelo = new EdificioTipoServicioModel()
+                    {
+                        Tipo_servicio_nombre = reader[0] + "",
+                        Servicio_nombre_empressa = reader[1] + "",
+                        Servicio_edificio_fecha = reader[2] + ""
+                    };
+                    lista.Add(modelo);
+                }
+            }
+            catch (Exception e)
+            {
+
+                Console.WriteLine(e.StackTrace);
+            }
+            finally
+            {
+                Desconectar();
+
+
+            }
+            return lista;
+        }
     }
 }

@@ -38,20 +38,29 @@
   </div>
 </nav>
     <div class="container-fluid">
-    
+    <form id="form1" runat="server">
         <div aria-sort="none"  class="row justify-content-center align-items-center">
             <div class="col col-sm-6 col-md-6 col-lg-4 col-xl-3">
-             <form id="form1" runat="server">
+             
                     <div class="form-group">
-                        <asp:DropDownList ID="dp_edificio" runat="server" DataSourceID="SqlDataSource1" DataTextField="nombre" DataValueField="Id" OnSelectedIndexChanged="dp_edificio_SelectedIndexChanged" AutoPostBack="True">
+                        <br />
+                        <br />
+                        &nbsp;
+                        <h2>Seleccione el edificio para ver sus servicios:</h2>
+                        <br />
+                        <br />
+&nbsp;<asp:DropDownList ID="dp_edificio" class="btn btn-lg btn-info dropdown-toggle" runat="server" DataSourceID="SqlDataSource1" DataTextField="nombre" DataValueField="Id" OnSelectedIndexChanged="dp_edificio_SelectedIndexChanged" AutoPostBack="True">
                         </asp:DropDownList>
                         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:inmobiDB %>" SelectCommand="SELECT [Id], [nombre] FROM [edificio]"></asp:SqlDataSource>
                     </div>
-                    <div class="form-group">
+                   
+
+            
+                <div class="form-group">
 
                         <br />
                         <br />
-                        <asp:GridView ID="gv_servicios" runat="server" AutoGenerateColumns="False">
+                        <asp:GridView ID="gv_servicios" runat="server" class="table table-bordered table-condensed  table-hover " AutoGenerateColumns="False">
                             <Columns>
                                 <asp:TemplateField HeaderText="Tipo Servicio">
                                     <ItemTemplate>
@@ -73,12 +82,11 @@
                         <br />
 
                     </div>
-
+            </div>
+             
+            </div>
+        
             </form>
-
-            </div>
-            </div>
-            
         </div>
 
 </body>
