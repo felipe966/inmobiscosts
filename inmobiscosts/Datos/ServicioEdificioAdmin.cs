@@ -9,18 +9,55 @@ namespace inmobiscosts.Datos
 {
     public class ServicioEdificioAdmin:Conexion
     {
-        public void Guardar(ServicioEdificioModel modelo)
+        public bool Guardar(ServicioEdificioModel modelo)
+        {
+            Conectar();
+            try
+            {
+
+                List<ServicioEdificioModel> lista = new List<ServicioEdificioModel>();
+                SqlCommand cmd = new SqlCommand("GetServicioEdificioByServicioId", cnn);
+                cmd.Parameters.Add(new SqlParameter("@id", modelo.Servicio_id));
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    return false;
+                }
+                else
+                {
+                    SqlCommand comando = new SqlCommand("GuardarServicioEdificio", cnn);
+                    comando.CommandType = System.Data.CommandType.StoredProcedure;
+                    comando.Parameters.Add(new SqlParameter("@edificio_id", modelo.Edificio_id));
+                    comando.Parameters.Add(new SqlParameter("@servicio_id", modelo.Servicio_id));
+                    comando.Parameters.Add(new SqlParameter("@fecha_corte", modelo.Fecha_corte));
+                    comando.ExecuteNonQuery();
+                    comando.Dispose();
+                    return true;
+                }
+                
+            }
+            catch (Exception e)
+            {
+
+                Console.WriteLine(e.StackTrace);
+                return false;   
+            }
+            finally
+            {
+                Desconectar();
+            }
+        }
+        public void Eliminar(int id)
         {
             Conectar();
             try
             {
 
 
-                SqlCommand comando = new SqlCommand("GuardarServicioEdificio", cnn);
+                SqlCommand comando = new SqlCommand("EliminarServicioEdificio", cnn);
                 comando.CommandType = System.Data.CommandType.StoredProcedure;
-                comando.Parameters.Add(new SqlParameter("@edificio_id", modelo.Edificio_id));
-                comando.Parameters.Add(new SqlParameter("@servicio_id", modelo.Servicio_id));
-                comando.Parameters.Add(new SqlParameter("@fecha_corte", modelo.Fecha_corte));
+                comando.Parameters.Add(new SqlParameter("@id", id));
                 comando.ExecuteNonQuery();
                 comando.Dispose();
             }
@@ -34,6 +71,32 @@ namespace inmobiscosts.Datos
                 Desconectar();
             }
         }
+
+        public void Actualizar(int Id, int Edificio_id,int Servicio_id, int Fecha_corte)
+        {
+            Conectar();
+            try
+            {
+                SqlCommand comando = new SqlCommand("EditarServicioEdificio", cnn);
+                comando.CommandType = System.Data.CommandType.StoredProcedure;
+                comando.Parameters.Add(new SqlParameter("@id",Id));
+                comando.Parameters.Add(new SqlParameter("@edificio_id",Edificio_id));
+                comando.Parameters.Add(new SqlParameter("@servicio_id",Servicio_id));
+                comando.Parameters.Add(new SqlParameter("@fecha_corte",Fecha_corte));
+                comando.ExecuteNonQuery();
+                comando.Dispose();
+            }
+            catch (Exception e)
+            {
+
+                Console.WriteLine(e.StackTrace);
+            }
+            finally
+            {
+                Desconectar();
+            }
+        }
+
         public List<ServicioEdificioModel> GetServicioEdificioByEdificioID(int Edificio_id)
         {
             List<ServicioEdificioModel> lista = new List<ServicioEdificioModel>();
@@ -83,9 +146,11 @@ namespace inmobiscosts.Datos
                 {
                     EdificioTipoServicioModel modelo = new EdificioTipoServicioModel()
                     {
-                        Tipo_servicio_nombre = reader[0]+"",
-                        Servicio_nombre_empressa = reader[1]+"",
-                        Servicio_edificio_fecha = reader[2]+""
+                        Servicio_edificio_id = (int)reader[0],
+                        Edificio_nombre = reader[1] + "",
+                        Tipo_servicio_nombre = reader[2]+"",
+                        Servicio_nombre_empressa = reader[3]+"",
+                        Servicio_edificio_fecha = reader[4]+""
                     };
                     lista.Add(modelo);
                 }
@@ -117,9 +182,11 @@ namespace inmobiscosts.Datos
                 {
                     EdificioTipoServicioModel modelo = new EdificioTipoServicioModel()
                     {
-                        Tipo_servicio_nombre = reader[0] + "",
-                        Servicio_nombre_empressa = reader[1] + "",
-                        Servicio_edificio_fecha = reader[2] + ""
+                        Servicio_edificio_id = (int)reader[0],
+                        Edificio_nombre = reader[1] + "",
+                        Tipo_servicio_nombre = reader[2] + "",
+                        Servicio_nombre_empressa = reader[3] + "",
+                        Servicio_edificio_fecha = reader[4] + ""
                     };
                     lista.Add(modelo);
                 }

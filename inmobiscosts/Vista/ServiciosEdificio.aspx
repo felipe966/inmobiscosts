@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ServiciosEdificio.aspx.cs" Inherits="inmobiscosts.Vista.ServiciosEdificio" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ServiciosEdificio.aspx.cs" Inherits="inmobiscosts.Vista.ServiciosEdificio" EnableEventValidation="false" %>
 
 <!DOCTYPE html>
 
@@ -60,23 +60,34 @@
 
                         <br />
                         <br />
-                        <asp:GridView ID="gv_servicios" runat="server" class="table table-bordered table-condensed  table-hover " AutoGenerateColumns="False">
+                        <asp:GridView ID="gv_servicios" runat="server" class="table table-bordered table-condensed  table-hover " AutoGenerateColumns="False" onrowdeleting="gv_servicios_RowDeleting" OnRowDataBound="gv_servicios_RowDataBound">
                             <Columns>
+                                <asp:TemplateField HeaderText="ID">
+                                    <ItemTemplate>
+                                         <asp:Label ID="lb_servicio_edificio_id" runat="server"   Text= '<%#Eval("Servicio_edificio_id")%>'></asp:Label>
+                                     </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Edificio">
+                                    <ItemTemplate>
+                                         <asp:Label ID="lb_edificio_nombre" runat="server"   Text= '<%#Eval("Edificio_nombre")%>'></asp:Label>
+                                     </ItemTemplate>
+                                </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Tipo Servicio">
                                     <ItemTemplate>
-                                         <asp:Label ID="lblid" runat="server"   Text= '<%#Eval("Tipo_servicio_nombre")%>'></asp:Label>
+                                         <asp:Label ID="lb_tipo_servicio_nombre" runat="server"   Text= '<%#Eval("Tipo_servicio_nombre")%>'></asp:Label>
                                      </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Proveedor / Empresa">
                                     <ItemTemplate>
-                                         <asp:Label ID="lblid" runat="server"   Text= '<%#Eval("Servicio_nombre_empressa")%>'></asp:Label>
+                                         <asp:Label ID="lb_servicio_nombre_empresa" runat="server"   Text= '<%#Eval("Servicio_nombre_empressa")%>'></asp:Label>
                                      </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Fecha de corte">
                                     <ItemTemplate>
-                                         <asp:Label ID="lblid" runat="server"   Text= '<%#Eval("Servicio_edificio_fecha")%>'></asp:Label>
+                                         <asp:Label ID="lb_servicio_edificio_fecha" runat="server"   Text= '<%#Eval("Servicio_edificio_fecha")%>'></asp:Label>
                                      </ItemTemplate>
                                 </asp:TemplateField>
+                                <asp:CommandField ShowDeleteButton="True" />
                             </Columns>
                         </asp:GridView>
                         <br />

@@ -8,6 +8,8 @@ namespace inmobiscosts.Datos
 {
     public class EdificioTipoServicioModel
     {
+        public int Servicio_edificio_id { get; set; }
+        public string Edificio_nombre { get; set; }
         [DisplayName(@"Tipo de servicio")]
         public string Tipo_servicio_nombre { get; set; }
         [DisplayName(@"Proveedor")]

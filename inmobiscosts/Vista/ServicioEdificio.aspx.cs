@@ -29,8 +29,17 @@ namespace inmobiscosts.Vista
                 Edificio_id = int.Parse(dp_edificio.SelectedValue),
                 Fecha_corte = int.Parse(dp_fecha_corte.SelectedValue),
             };
-            admin.Guardar(modelo);
-            Response.Redirect("ServicioEdificio.aspx");
+            if (admin.Guardar(modelo))
+            {
+                Response.Redirect("ServicioEdificio.aspx");
+            }
+            else
+            {
+                Response.Write("<script>alert('Data inserted successfully')</script>");
+                //Response.Redirect("ServicioEdificio.aspx");
+            }
+            
+            
 
         }
 
