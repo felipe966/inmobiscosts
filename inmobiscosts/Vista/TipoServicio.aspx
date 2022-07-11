@@ -58,6 +58,29 @@
                 <asp:Button ID="bt_agregar" runat="server" Height="42px" OnClick="bt_agregar_Click" CssClass="btn btn-info btn-lg btn-block"  Text="Agregar" Width="197px" />
                  </div><br />
                  <br />
+                 <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="Id" DataSourceID="SqlDataSource1">
+                     <Columns>
+                         <asp:BoundField DataField="Id" HeaderText="ID" InsertVisible="False" ReadOnly="True" SortExpression="Id" />
+                         <asp:BoundField DataField="nombre" HeaderText="Nombre del servicio" SortExpression="nombre" />
+                         <asp:BoundField DataField="unidad_medida" HeaderText="Unidad de medida" SortExpression="unidad_medida" />
+                         <asp:CommandField ShowEditButton="True" />
+                         <asp:CommandField ShowDeleteButton="True" />
+                     </Columns>
+                 </asp:GridView>
+                 <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:inmobiDB %>" DeleteCommand="DELETE FROM [tipo_servicio] WHERE [Id] = @Id" InsertCommand="INSERT INTO [tipo_servicio] ([nombre], [unidad_medida]) VALUES (@nombre, @unidad_medida)" SelectCommand="SELECT * FROM [tipo_servicio]" UpdateCommand="UPDATE [tipo_servicio] SET [nombre] = @nombre, [unidad_medida] = @unidad_medida WHERE [Id] = @Id">
+                     <DeleteParameters>
+                         <asp:Parameter Name="Id" Type="Int32" />
+                     </DeleteParameters>
+                     <InsertParameters>
+                         <asp:Parameter Name="nombre" Type="String" />
+                         <asp:Parameter Name="unidad_medida" Type="String" />
+                     </InsertParameters>
+                     <UpdateParameters>
+                         <asp:Parameter Name="nombre" Type="String" />
+                         <asp:Parameter Name="unidad_medida" Type="String" />
+                         <asp:Parameter Name="Id" Type="Int32" />
+                     </UpdateParameters>
+                 </asp:SqlDataSource>
                  <br />
                  </form>
 

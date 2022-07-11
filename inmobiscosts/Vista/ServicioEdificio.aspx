@@ -38,10 +38,9 @@
   </div>
 </nav>
     <div class="container-fluid">
-    
+        <form id="form1" runat="server">
         <div aria-sort="none"  class="row justify-content-center align-items-center">
             <div class="col col-sm-6 col-md-6 col-lg-4 col-xl-3">
-             <form id="form1" runat="server">
                 &nbsp;Nombre del edificio
              <div class="form-group">
                  <asp:DropDownList ID="dp_edificio" runat="server" DataSourceID="SqlDataSource1" DataTextField="nombre" DataValueField="Id">
@@ -105,11 +104,40 @@
                  <div class="form-group">
                 <asp:Button ID="bt_agregar" runat="server" Height="42px" OnClick="bt_agregar_Click" CssClass="btn btn-info btn-lg btn-block"  Text="Agregar" Width="197px" />
                  </div>
-                      </form>
+                      
 
             </div>
-            </div>
+            <br />
             
+            </div>
+            <div style="width:100%">
+            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource3"  class="table table-bordered table-condensed table-responsive table-hover ">
+                <Columns>
+                    <asp:BoundField DataField="Id" HeaderText="Id" InsertVisible="False" ReadOnly="True" SortExpression="Id" />
+                    <asp:BoundField DataField="servicio_id" HeaderText="ID Servicio" SortExpression="servicio_id" />
+                    <asp:BoundField DataField="edificio_id" HeaderText="ID Edificio" SortExpression="edificio_id" />
+                    <asp:BoundField DataField="fecha_corte" HeaderText="Fecha Corte" SortExpression="fecha_corte" />
+                    <asp:CommandField ShowEditButton="True" />
+                    <asp:CommandField ShowDeleteButton="True" />
+                </Columns>
+                <EmptyDataTemplate>
+                    <asp:TextBox ID="TextBox1" runat="server" Text='<%# Eval("servicio_id", "{0:D}") %>'></asp:TextBox>
+                    <br />
+                    <asp:TextBox ID="TextBox2" runat="server" Text='<%# Eval("edificio_id", "{0:D}") %>'></asp:TextBox>
+                    <asp:TextBox ID="TextBox3" runat="server" Text='<%# Eval("fecha_corte", "{0:D}") %>'></asp:TextBox>
+                    <br />
+                </EmptyDataTemplate>
+            </asp:GridView>
+                <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:inmobiDB %>" SelectCommand="SELECT * FROM [servicio_edificio]"  UpdateCommand="UPDATE [servicio_edificio] SET [servicio_id] = @servicio_id, [edificio_id] = @edificio_id, [fecha_corte] = @fecha_corte WHERE [Id] = @Id"  DeleteCommand="DELETE FROM [servicio_edificio] WHERE [Id] = @Id">
+                    <UpdateParameters>
+                        <asp:Parameter Name="id" Type="Int32" />
+                        <asp:Parameter Name="servicio_id" Type="Int32" />
+                        <asp:Parameter Name="edificio_id" Type="Int32" />
+                        <asp:Parameter Name="fecha_corte" Type="Byte" />
+                    </UpdateParameters>
+                </asp:SqlDataSource>
+            </div>
+            </form>
         </div>
             
 </body>

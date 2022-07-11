@@ -38,10 +38,10 @@
   </div>
 </nav>
     <div class="container-fluid">
-    
+    <form id="form1" runat="server">
         <div aria-sort="none"  class="row justify-content-center align-items-center">
             <div class="col col-sm-6 col-md-6 col-lg-4 col-xl-3">
-             <form id="form1" runat="server">
+             
                 &nbsp;
              <div class="form-group">
             <asp:TextBox ID="txt_nombre_empresa" runat="server" Width="293px" CssClass="form-control form-control-lg" placeholder="Nombre de la empresa"></asp:TextBox>
@@ -55,13 +55,40 @@
                  <br /><div class="form-group">
                 <asp:Button ID="bt_agregar" runat="server" Height="42px" OnClick="bt_agregar_Click" CssClass="btn btn-info btn-lg btn-block"  Text="Agregar" Width="197px" />
                  </div><br />
+                 <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="Id" DataSourceID="SqlDataSource1"  class="table table-bordered table-condensed table-responsive table-hover " >
+                     <Columns>
+                         <asp:BoundField DataField="Id" HeaderText="ID Servicio" InsertVisible="False" ReadOnly="True" SortExpression="Id" />
+                         <asp:BoundField DataField="nombre_empresa" HeaderText="Nombre de la Empresa" SortExpression="nombre_empresa" />
+                         <asp:BoundField DataField="tipo_id" HeaderText="ID Tipo de Servicio" SortExpression="tipo_id" />
+                         <asp:CommandField ShowEditButton="True" />
+                         <asp:CommandField ShowDeleteButton="True" />
+                     </Columns>
+                     <EmptyDataTemplate>
+                         <asp:TextBox ID="TextBox1" runat="server" Text='<%# Eval("nombre_empresa", "{0}") %>'></asp:TextBox>
+                         <asp:TextBox ID="TextBox2" runat="server" Text='<%# Eval("tipo_id", "{0:D}") %>'></asp:TextBox>
+                     </EmptyDataTemplate>
+                </asp:GridView>
+                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:inmobiDB %>" DeleteCommand="DELETE FROM [servicio] WHERE [Id] = @Id" InsertCommand="INSERT INTO [servicio] ([nombre_empresa], [tipo_id]) VALUES (@nombre_empresa, @tipo_id)" SelectCommand="SELECT [nombre_empresa], [tipo_id], [Id] FROM [servicio]" UpdateCommand="UPDATE [servicio] SET [nombre_empresa] = @nombre_empresa, [tipo_id] = @tipo_id WHERE [Id] = @Id">
+                    <DeleteParameters>
+                        <asp:Parameter Name="Id" Type="Int32" />
+                    </DeleteParameters>
+                    <InsertParameters>
+                        <asp:Parameter Name="nombre_empresa" Type="String" />
+                        <asp:Parameter Name="tipo_id" Type="Int32" />
+                    </InsertParameters>
+                    <UpdateParameters>
+                        <asp:Parameter Name="nombre_empresa" Type="String" />
+                        <asp:Parameter Name="tipo_id" Type="Int32" />
+                        <asp:Parameter Name="Id" Type="Int32" />
+                    </UpdateParameters>
+                </asp:SqlDataSource>
                  <br />
                  <br />
-                 </form>
+                 
 
             </div>
             </div>
-            
+            </form>
         </div>
 </body>
 </html>
